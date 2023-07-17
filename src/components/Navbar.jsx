@@ -12,11 +12,11 @@ const Navbar = () => {
             </a>
 
             <div className="text-center mt-8">
-                <div className="text-xl lg:text-2xl text-slate-500">
+                <div className="text-xl lg:text-2xl text-slate-300">
                     Made by{" "}
                     <a
                         href="https://www.linkedin.com/in/tusharupadhya/"
-                        className="no-underline font-bold hover:text-slate-700"
+                        className="no-underline font-bold hover:text-slate-500 transition"
                     >
                         Tushar Upadhyay
                     </a>
