@@ -233,6 +233,7 @@ export const versionControlBadges = [
         isSelected: false,
     },
 ];
+
 export const DatabaseBadges = [
     {
         name: "Amazon DynamoDB",
@@ -315,6 +316,7 @@ export const DatabaseBadges = [
         isSelected: false,
     },
 ];
+
 export const FPL = [
     {
         name: ".NET",
@@ -677,6 +679,7 @@ export const FPL = [
         isSelected: false,
     },
 ];
+
 export const SocialsBadges = [
     {
         name: "Airtable",

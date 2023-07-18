@@ -4,9 +4,12 @@ import Home from "../pages/Home";
 import Generate from "../pages/Generate";
 import NotFound from "../pages/NotFound";
 
+import Navbar from "../components/Navbar";
+
 const AppRoutes = () => {
     return (
         <BrowserRouter>
+            <Navbar />
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/generate" element={<Generate />} />
