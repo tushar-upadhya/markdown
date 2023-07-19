@@ -61,10 +61,17 @@ const Generate = () => {
     return (
         <>
             <div className="flex flex-col lg:flex-row">
-                <div className="basic-1/2 h-screen overflow-auto p-2 lg:p-4 select-none">
+                <div className="basis-1/2 h-screen overflow-auto p-2 lg:p-4 select-none">
+                    {" "}
                     <div className="text-center text-xl">
-                        Badge Type:
-                        <select name="badge-type" id="badge-type">
+                        Badge Type:{" "}
+                        <select
+                            name="badge-type"
+                            id="badge-type"
+                            onChange={(e) => {
+                                setBadgeType(e.target.value);
+                            }}
+                        >
                             <option value="for-the-badge" defaultValue={true}>
                                 For The Badge
                             </option>
@@ -74,13 +81,10 @@ const Generate = () => {
                             <option value="social">Social</option>
                         </select>
                     </div>
-
-                    {/* Language */}
-
+                    {/*Languages  */}
                     <div className="text-slate-900 font-medium pt-6 pb-2">
-                        Language
+                        Languages
                     </div>
-
                     <div className="font-medium text-xl">
                         <div className="text-slate-700">
                             {languages.map((badge) => (
@@ -92,7 +96,9 @@ const Generate = () => {
                                             : "border-slate-300 text-slate-800")
                                     }
                                     key={badge.name}
-                                    onClick={() => handleTechLang(badge.name)}
+                                    onClick={() =>
+                                        handleTechLanguage(badge.name)
+                                    }
                                 >
                                     {" "}
                                     <span className="pl-2 pr-1 py-1">
@@ -121,105 +127,190 @@ const Generate = () => {
                             ))}
                         </div>
 
-                        {/* Frameworks & Libraries */}
-
+                        {/* Framework & Libraries */}
                         <div className="text-slate-900 font-medium pt-6 pb-2">
-                            Frameworks & Libraries
+                            Framework & Libraries
                         </div>
-
                         <div className="text-slate-700">
-                            {FPL.map((badge) => {
-                                return (
-                                    <div
+                            {fpl.map((badge) => (
+                                <div
+                                    className={
+                                        "transition-all cursor-pointer w-fit inline-block m-1  border-2 rounded-lg " +
+                                        (badge.isSelected
+                                            ? "bg-slate-700 border-slate-700 text-slate-50"
+                                            : "border-slate-300 text-slate-800")
+                                    }
+                                    key={badge.name}
+                                    onClick={() => handleTechFPL(badge.name)}
+                                >
+                                    {" "}
+                                    <span className="pl-2 pr-1 py-1">
+                                        {badge.name}
+                                    </span>{" "}
+                                    <button
                                         className={
-                                            "transition-all cursor-pointer w-fit inline-block m-1 border-2 rounded-lg" +
+                                            "w-6  rounded-r-md font-medium " +
                                             (badge.isSelected
-                                                ? "bg-slate-700 border-slate-700 text-slate-50"
-                                                : "border-slate-300 text-slate-800")
-                                        }
-                                        key={badge.name}
-                                        onClick={() =>
-                                            handleTechFPL(badge.name)
+                                                ? " text-slate-50 "
+                                                : "text-slate-600")
                                         }
                                     >
-                                        <span className="pl-2 pr-1 py-1">
-                                            {badge.name}
-                                        </span>
-
-                                        <button
+                                        <div
                                             className={
-                                                "w-6 rounded-r-md font-medium" +
+                                                "transition-all inline-block " +
                                                 (badge.isSelected
-                                                    ? "text-slate-50"
-                                                    : "text-slate-600")
+                                                    ? " rotate-45"
+                                                    : "rotate-0")
                                             }
                                         >
-                                            <div
-                                                className={
-                                                    "transition-all inline-block" +
-                                                    (badge.isSelected
-                                                        ? "rotate-45"
-                                                        : "rotate-0")
-                                                }
-                                            >
-                                                +
-                                            </div>
-                                        </button>
-                                    </div>
-                                );
-                            })}
+                                            +
+                                        </div>
+                                    </button>
+                                </div>
+                            ))}
                         </div>
 
-                        {/* database */}
-
+                        {/* Databases */}
                         <div className="text-slate-900 font-medium pt-6 pb-2">
-                            DataBases
+                            Databases
                         </div>
                         <div className="text-slate-700">
-                            {dataBase.map((badge) => {
-                                return (
-                                    <div
+                            {dataBase.map((badge) => (
+                                <div
+                                    className={
+                                        "transition-all cursor-pointer w-fit inline-block m-1  border-2 rounded-lg " +
+                                        (badge.isSelected
+                                            ? "bg-slate-700 border-slate-700 text-slate-50"
+                                            : "border-slate-300 text-slate-800")
+                                    }
+                                    key={badge.name}
+                                    onClick={() =>
+                                        handleTechDataBase(badge.name)
+                                    }
+                                >
+                                    {" "}
+                                    <span className="pl-2 pr-1 py-1">
+                                        {badge.name}
+                                    </span>{" "}
+                                    <button
                                         className={
-                                            "transition-all cursor-pointer w-fit inline-block m-1 border-2 rounded-lg" +
+                                            "w-6  rounded-r-md font-medium " +
                                             (badge.isSelected
-                                                ? "bg-slate-700 border-slate-700 text-slate-50"
-                                                : "border-slate-300 text-slate-800")
-                                        }
-                                        key={badge.name}
-                                        onClick={() =>
-                                            handleTechDataBase(badge.name)
+                                                ? " text-slate-50 "
+                                                : "text-slate-600")
                                         }
                                     >
-                                        <span className="pl-2 pr-1 py-1">
-                                            {badge.name}
-
-                                            <button
-                                                className={
-                                                    "w-6 rounded-r-md font-medium" +
-                                                    (badge.isSelected
-                                                        ? "text-slate-50"
-                                                        : "text-slate-600")
-                                                }
-                                            >
-                                                <div
-                                                    className={
-                                                        "transition-all inline-block" +
-                                                        (badge.isSelected
-                                                            ? "rotate-45"
-                                                            : "rotate-0")
-                                                    }
-                                                >
-                                                    +
-                                                </div>
-                                            </button>
-                                        </span>
-                                    </div>
-                                );
-                            })}
+                                        <div
+                                            className={
+                                                "transition-all inline-block " +
+                                                (badge.isSelected
+                                                    ? " rotate-45"
+                                                    : "rotate-0")
+                                            }
+                                        >
+                                            +
+                                        </div>
+                                    </button>
+                                </div>
+                            ))}
                         </div>
-
-                        {/* version controls */}
+                        {/* Version Control */}
+                        <div className="text-slate-900 font-medium pt-6 pb-2">
+                            Version Control
+                        </div>
+                        <div className="text-slate-700">
+                            {versionControl.map((badge) => (
+                                <div
+                                    className={
+                                        "transition-all cursor-pointer w-fit inline-block m-1  border-2 rounded-lg " +
+                                        (badge.isSelected
+                                            ? "bg-slate-700 border-slate-700 text-slate-50"
+                                            : "border-slate-300 text-slate-800")
+                                    }
+                                    key={badge.name}
+                                    onClick={() =>
+                                        handleTechVersion(badge.name)
+                                    }
+                                >
+                                    {" "}
+                                    <span className="pl-2 pr-1 py-1">
+                                        {badge.name}
+                                    </span>{" "}
+                                    <button
+                                        className={
+                                            "w-6  rounded-r-md font-medium " +
+                                            (badge.isSelected
+                                                ? " text-slate-50 "
+                                                : "text-slate-600")
+                                        }
+                                    >
+                                        <div
+                                            className={
+                                                "transition-all inline-block " +
+                                                (badge.isSelected
+                                                    ? " rotate-45"
+                                                    : "rotate-0")
+                                            }
+                                        >
+                                            +
+                                        </div>
+                                    </button>
+                                </div>
+                            ))}
+                        </div>
+                        {/* Socials */}
+                        <div className="text-slate-900 font-medium pt-6 pb-2">
+                            Socials
+                        </div>
+                        <div className="text-slate-700">
+                            {SocialsBadges.map((badge) => (
+                                <div
+                                    className={
+                                        "transition-all cursor-pointer w-fit inline-block m-1  border-2 rounded-lg " +
+                                        (badge.isSelected
+                                            ? "bg-slate-700 border-slate-700 text-slate-50"
+                                            : "border-slate-300 text-slate-800")
+                                    }
+                                    key={badge.name}
+                                    onClick={() => handleSocial(badge.name)}
+                                >
+                                    {" "}
+                                    <span className="pl-2 pr-1 py-1 ">
+                                        {badge.name}
+                                    </span>{" "}
+                                    <button
+                                        className={
+                                            "w-6  rounded-r-md font-medium " +
+                                            (badge.isSelected
+                                                ? " text-slate-50 "
+                                                : "text-slate-600")
+                                        }
+                                    >
+                                        <div
+                                            className={
+                                                "transition-all inline-block " +
+                                                (badge.isSelected
+                                                    ? " rotate-45"
+                                                    : "rotate-0")
+                                            }
+                                        >
+                                            +
+                                        </div>
+                                    </button>
+                                </div>
+                            ))}
+                        </div>
                     </div>
+                </div>
+                <div className="basis-1/2 h-screen overflow-auto p-2 lg:p-4">
+                    {/* <Preview
+                        database={database}
+                        versionControl={versionControl}
+                        fpl={fpl}
+                        languages={languages}
+                        social={social}
+                        badgeType={badgeType}
+                    /> */}
                 </div>
             </div>
         </>
