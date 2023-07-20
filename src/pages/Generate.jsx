@@ -7,9 +7,10 @@ import {
     versionControlBadges,
     SocialsBadges,
 } from "../data/badges";
+import Preview from "../components/Preview";
 
 const Generate = () => {
-    const [languages, setLanguages] = useState([]);
+    const [languages, setLanguages] = useState([...LanguageBadges]);
 
     const [versionControl, setVersionControl] = useState([
         ...versionControlBadges,
@@ -21,41 +22,41 @@ const Generate = () => {
 
     const [social, setSocial] = useState([...SocialsBadges]);
 
-    const [badgeType, setBadgeType] = useState(["for-the-badge"]);
+    const [badgeType, setBadgeType] = useState("for-the-badge");
 
     const handleTechLanguage = (techName) => {
-        const nextList = [...languages];
-        const current = languages.find((e) => e.name === techName);
-        current.isSelected = current.isSelected ? false : true;
-        setLanguages(nextList);
+        const myNextList = [...languages];
+        const current = languages.find((a) => a.name === techName);
+        current.isSelected = !current.isSelected;
+        setLanguages(myNextList);
     };
 
-    const handleTechVersion = (techName, selected) => {
+    const handleTechVersion = (techName) => {
         const nextList = [...versionControl];
         const current = versionControl.find((e) => e.name === techName);
-        current.isSelected = current.isSelected ? false : true;
-        setLanguages(nextList);
+        current.isSelected = !current.isSelected;
+        setVersionControl(nextList);
     };
 
-    const handleTechDataBase = (techName, selected) => {
+    const handleTechDataBase = (techName) => {
         const nextList = [...dataBase];
         const current = dataBase.find((e) => e.name === techName);
-        current.isSelected = current.isSelected ? false : true;
-        setLanguages(nextList);
+        current.isSelected = !current.isSelected;
+        setDataBase(nextList);
     };
 
-    const handleTechFPL = (techName, selected) => {
+    const handleTechFPL = (techName) => {
         const nextList = [...fpl];
         const current = fpl.find((e) => e.name === techName);
-        current.isSelected = current.isSelected ? false : true;
-        setLanguages(nextList);
+        current.isSelected = !current.isSelected;
+        setFpl(nextList);
     };
 
-    const handleSocial = (techName, selected) => {
+    const handleSocial = (techName) => {
         const nextList = [...social];
         const current = social.find((e) => e.name === techName);
-        current.isSelected = current.isSelected ? false : true;
-        setLanguages(nextList);
+        current.isSelected = !current.isSelected;
+        setSocial(nextList);
     };
 
     return (
@@ -63,25 +64,6 @@ const Generate = () => {
             <div className="flex flex-col lg:flex-row">
                 <div className="basis-1/2 h-screen overflow-auto p-2 lg:p-4 select-none">
                     {" "}
-                    <div className="text-center text-xl">
-                        Badge Type:{" "}
-                        <select
-                            name="badge-type"
-                            id="badge-type"
-                            onChange={(e) => {
-                                setBadgeType(e.target.value);
-                            }}
-                        >
-                            <option value="for-the-badge" defaultValue={true}>
-                                For The Badge
-                            </option>
-                            <option value="plastic">Plastic</option>
-                            <option value="flat">Flat</option>
-                            <option value="flat-square">Flat Square</option>
-                            <option value="social">Social</option>
-                        </select>
-                    </div>
-                    {/*Languages  */}
                     <div className="text-slate-900 font-medium pt-6 pb-2">
                         Languages
                     </div>
@@ -128,6 +110,7 @@ const Generate = () => {
                         </div>
 
                         {/* Framework & Libraries */}
+
                         <div className="text-slate-900 font-medium pt-6 pb-2">
                             Framework & Libraries
                         </div>
@@ -214,6 +197,7 @@ const Generate = () => {
                                 </div>
                             ))}
                         </div>
+
                         {/* Version Control */}
                         <div className="text-slate-900 font-medium pt-6 pb-2">
                             Version Control
@@ -258,6 +242,7 @@ const Generate = () => {
                                 </div>
                             ))}
                         </div>
+
                         {/* Socials */}
                         <div className="text-slate-900 font-medium pt-6 pb-2">
                             Socials
@@ -303,14 +288,14 @@ const Generate = () => {
                     </div>
                 </div>
                 <div className="basis-1/2 h-screen overflow-auto p-2 lg:p-4">
-                    {/* <Preview
-                        database={database}
+                    <Preview
+                        database={dataBase}
                         versionControl={versionControl}
                         fpl={fpl}
                         languages={languages}
                         social={social}
                         badgeType={badgeType}
-                    /> */}
+                    />
                 </div>
             </div>
         </>

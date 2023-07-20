@@ -8,14 +8,18 @@ import Navbar from "../components/Navbar";
 
 const AppRoutes = () => {
     return (
-        <BrowserRouter>
-            <Navbar />
-            <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/generate" element={<Generate />} />
-                <Route path="*" element={<NotFound />} />
-            </Routes>
-        </BrowserRouter>
+        <>
+            <div className=" text-slate-900 Poppins">
+                <BrowserRouter>
+                    <Navbar />
+                    <Routes>
+                        <Route path="/" element={<Home />} />
+                        <Route path="/generate" element={<Generate />} />
+                        <Route path="*" element={<NotFound />} />
+                    </Routes>
+                </BrowserRouter>
+            </div>
+        </>
     );
 };
 
